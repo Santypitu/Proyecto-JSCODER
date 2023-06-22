@@ -7,6 +7,7 @@ let costoCalzado=10000;
 let tipoRopa;
 let cantPrenda;
 let boolCont;
+let opcionesValidas = [1, 2, 3];
 console.log("Nombre completo es igual a: "+nombreUsuario+" "+ apellidoUsuario)
 
 let intro = prompt("Usted se encuentra en nuestra tienda de ropa, si desea continuar y comprar indique: SI, caso contrario inserte:NO")
@@ -17,18 +18,17 @@ while (intro != "SI" && intro != "NO") {
 }
 if (intro == "SI") {
     do{
-    AveriguarTipoRopa();
-    switch (tipoRopa){
-        case 1:
-            procesarRemera();
-            consultaContinuar();
-        case 2:
-            procesarPantalon();
-            consultaContinuar();
-        case 3:
-            procesarCalzado();
-            consultaContinuar();
-    }
+        switch(AveriguarTipoRopa()){
+            case 1:
+                procesarRemera();
+                consultaContinuar();
+            case 2:
+                procesarPantalon();
+                consultaContinuar();
+            case 3:
+                procesarCalzado();
+                consultaContinuar();
+        }
     } while (boolCont)
 
     alert("Muchas gracias por comprar, el precio final es: "+ precioTotal)
@@ -41,7 +41,7 @@ function AveriguarTipoRopa() {
     do {
         tipoRopa = parseInt(prompt("Seleccione qué tipo de prenda quiere comprar:\n1 - Remeras\n2 - Pantalones\n3 - Calzado"));
 
-        let opcionesValidas = [1, 2, 3];
+        
         if (!opcionesValidas.includes(tipoRopa)) {
             alert("ERROR: Vuelva a intentarlo");
         }
@@ -72,31 +72,25 @@ function procesarDeuda(precio,cantidad){
 
 function procesarRemera(){
     do{
-        cantPrenda = prompt("Inserte cantidad de remeras que desea comprar:")
-        let cantPrendaParse = parseInt(cantPrenda);
-        ValidarNumero(cantPrendaParse);
-    } while (!isNumberValid)
-    procesarDeuda(costoRemera,cantPrendaParse);
+        cantPrenda = parseInt(prompt("Inserte cantidad de remeras que desea comprar:"))
+    } while (!ValidarNumero(cantPrenda))
+    procesarDeuda(costoRemera,cantPrenda);
     return precioTotal;
 }
 
 function procesarPantalon(){
     do{
-        cantPrenda = prompt("Inserte cantidad de pantalones que desea comprar:")
-        let cantPrendaParse = parseInt(cantPrenda);
-        ValidarNumero(cantPrendaParse);
-    } while (!isNumberValid)
-    procesarDeuda(costoPantalon,cantPrendaParse);
+        cantPrenda = parseInt(prompt("Inserte cantidad de pantalones que desea comprar:"))
+    } while (!ValidarNumero(cantPrenda))
+    procesarDeuda(costoPantalon,cantPrenda);
     return precioTotal;
 }
 
 function procesarCalzado(){
     do{
-        cantPrenda = prompt("Inserte cantidad de Calzados que desea comprar:")
-        let cantPrendaParse = parseInt(cantPrenda);
-        ValidarNumero(cantPrendaParse);
-    } while (!isNumberValid)
-    procesarDeuda(costoCalzado,cantPrendaParse);
+        cantPrenda = parseInt(prompt("Inserte cantidad de calzado que desea comprar:"))
+    } while (!ValidarNumero(cantPrenda))
+    procesarDeuda(costoCalzado,cantPrenda);
     return precioTotal;
 }
 
@@ -106,7 +100,7 @@ function ValidarNumero(numero){
     }
     else{
         isNumberValid = false
-        alert("Error: Inserte numero nuevamente")
+        alert("Error: Inserte numero nuevamente A")
     }
     return isNumberValid;
 }
