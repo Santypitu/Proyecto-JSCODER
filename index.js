@@ -1,5 +1,12 @@
 let nombreUsuario = prompt("ingrese su nombre:");
 let apellidoUsuario = prompt("ingrese su Apellido:");
+let precioTotal=0;
+let costoRemera=5000;
+let costoPantalon=6000;
+let costoCalzado=10000;
+let tipoRopa;
+let cantPrenda;
+let boolCont;
 console.log("Nombre completo es igual a: "+nombreUsuario+" "+ apellidoUsuario)
 
 let intro = prompt("Usted se encuentra en nuestra tienda de ropa, si desea continuar y comprar indique: SI, caso contrario inserte:NO")
@@ -9,13 +16,6 @@ while (intro != "SI" && intro != "NO") {
    intro = prompt("Usted se encuentra en nuestra tienda de ropa, si desea continuar y comprar indique: SI, caso contrario inserte:NO")
 }
 if (intro == "SI") {
-    let costoRemera=5000;
-    let costoPantalon=6000;
-    let costoCalzado=10000;
-    let tipoRopa;
-    let cantPrenda;
-    let precioTotal;
-    let boolCont;
     do{
     AveriguarTipoRopa();
     switch (tipoRopa){
@@ -39,9 +39,9 @@ function AveriguarTipoRopa() {
     let tipoRopa;
 
     do {
-        tipoRopa = prompt("Seleccione qué tipo de prenda quiere comprar:\n1 - Remeras\n2 - Pantalones\n3 - Calzado");
+        tipoRopa = parseInt(prompt("Seleccione qué tipo de prenda quiere comprar:\n1 - Remeras\n2 - Pantalones\n3 - Calzado"));
 
-        let opcionesValidas = ["1", "2", "3"];
+        let opcionesValidas = [1, 2, 3];
         if (!opcionesValidas.includes(tipoRopa)) {
             alert("ERROR: Vuelva a intentarlo");
         }
