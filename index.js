@@ -21,15 +21,15 @@ if (intro == "SI") {
         switch(AveriguarTipoRopa()){
             case 1:
                 procesarRemera();
-                consultaContinuar();
+                break
             case 2:
                 procesarPantalon();
-                consultaContinuar();
+                break
             case 3:
                 procesarCalzado();
-                consultaContinuar();
+                break
         }
-    } while (boolCont)
+    } while (consultaContinuar())
 
     alert("Muchas gracias por comprar, el precio final es: "+ precioTotal)
 
@@ -94,15 +94,14 @@ function procesarCalzado(){
     return precioTotal;
 }
 
-function ValidarNumero(numero){
-    if (!isNaN(numero) && numero<0){
-        isNumberValid = true
-    }
-    else{
-        isNumberValid = false
-        alert("Error: Inserte numero nuevamente A")
-    }
-    return isNumberValid;
+function ValidarNumero(numero) {
+	if (isNaN(numero) && numero < 0) {
+		isNumberValid = false;
+		alert("Error: Inserte numero nuevamente A");
+	} else {
+		isNumberValid = true;
+	}
+	return isNumberValid;
 }
 
 function consultaContinuar(){
